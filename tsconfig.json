@@ -10,6 +10,14 @@
     // Enable stricter transpilation for better output.
     "isolatedModules": true,
     // Add type definitions for our Astro runtime.
-    "types": ["astro/client"]
-  }
+    "types": ["astro/client"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["src/*"]
+    }
+  },
+
+  "exclude": ["node_modules"],
+  "include": ["src/**/*.{ts,astro,svelte}"]
 }

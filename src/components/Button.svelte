@@ -1,5 +1,5 @@
 <script>
-	export let label = ''
+  export let label = "";
 </script>
 
 <button>{label}</button>

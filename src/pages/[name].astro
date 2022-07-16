@@ -1,0 +1,18 @@
+---
+import Layout from "~layouts/Layout.astro";
+import { getAllPokemons } from "~services/pokemon";
+
+export async function getStaticPaths() {
+  const pokemons = await getAllPokemons()
+
+  return pokemons.map(p => ({ params: { name: p.name } }))
+}
+
+const { name } = Astro.params;
+---
+
+<Layout title={name.toString()}>
+  <h1 class="text-4xl">
+    {name}
+  </h1>
+</Layout>
