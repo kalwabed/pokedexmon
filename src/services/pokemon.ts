@@ -7,7 +7,7 @@ export async function getAllPokemons() {
     },
   });
 
-  const listPokemons = await api.listPokemons(0, 100);
+  const listPokemons = await api.listPokemons(0, 10);
 
   const pokemonsWithDetail = await Promise.all(
     listPokemons.results.map(async pokemon => {
