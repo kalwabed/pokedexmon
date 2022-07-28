@@ -1,34 +1,128 @@
 ---
 export interface Props {
 	title: string;
-	body: string;
+	elements: string[];
 	href: string;
 	imageUrl: string;
 	index: number
 }
 
-const { href, title, body, imageUrl, index } = Astro.props as Props;
+const { href, title, elements, imageUrl, index } = Astro.props as Props;
 ---
 
-<a href={href} class="link-card shadow-lg transform hover:-skew-y-3 ">
+<a href={href} class="link-card shadow-lg hover:shadow-xl transform hover:-skew-y-3 ">
 	<div class="box flex flex-col h-full justify-center text-center gap-2">
 		<p class="font-bold text-lg">#{index+1}</p>
 		<div class="w-28 h-32 mx-auto inline-flex items-center justify-center">
-			<img src={imageUrl} alt="Pokemon" width="200" height="200" decoding="async">
+			<img src={imageUrl} alt="Pokemon" width="200" height="200" decoding="async" loading='lazy'>
 		</div>
 		<h2 class="text-xl md:text-3xl font-bold mt-3 capitalize">
 			{title}
 		</h2>
-		<p>
-			{body}
-		</p>
+		<div class="inline-flex gap-4 justify-center">
+			{elements.map(el=>(
+			<img class={`h-7 w-7 ${el} rounded-full p-1`} src={`${el}.png`} title={el} width="30" height="30" alt="element"
+				decoding="async" loading='lazy' />
+			))}
+		</div>
 	</div>
 </a>
 
 <style>
 	:root {
 		--link-gradient: linear-gradient(45deg, #4f39fa, #da62c4 30%, var(--color-border) 60%);
+		--grass: #5FBD58;
+		--bug: #92BC2C;
+		--dark: #595761;
+		--dragon: #0C69C8;
+		--electric: #F2D94E;
+		--fairy: #EE90E6;
+		--fighting: #D3425F;
+		--fire: #dc872f;
+		--flying: #A1BBEC;
+		--ghost: #5F6DBC;
+		--ground: #DA7C4D;
+		--ice: #75D0C1;
+		--normal: #A0A29F;
+		--poison: #B763CF;
+		--psychic: #ff2ca8;
+		--rock: #a38c21;
+		--steel: #5695A3;
+		--water: #539DDF;
 	}
+
+	.grass {
+		background: var(--grass);
+	}
+
+	.bug {
+		background: var(--bug);
+	}
+
+	.dark {
+		background: var(--dark);
+	}
+
+	.dragon {
+		background: var(--dragon);
+	}
+
+	.electric {
+		background: var(--electric);
+	}
+
+	.fairy {
+		background: var(--fairy);
+	}
+
+	.fighting {
+		background: var(--fighting);
+	}
+
+	.flying {
+		background: var(--flying);
+	}
+
+	.ghost {
+		background: var(--ghost);
+	}
+
+	.ground {
+		background: var(--ground);
+	}
+
+	.ice {
+		background: var(--ice);
+	}
+
+	.normal {
+		background: var(--normal);
+	}
+
+	.poison {
+		background: var(--poison);
+	}
+
+	.psychic {
+		background: var(--psychic);
+	}
+
+	.rock {
+		background: var(--rock);
+	}
+
+	.steel {
+		background: var(--steel);
+	}
+
+	.water {
+		background: var(--water);
+	}
+
+	.fire {
+		background: var(--fire);
+	}
+
 
 	.link-card {
 		display: flex;
