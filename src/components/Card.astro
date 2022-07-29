@@ -1,4 +1,6 @@
 ---
+import Element from '~components/Element.astro'
+
 export interface Props {
 	title: string;
 	elements: string[];
@@ -21,8 +23,7 @@ const { href, title, elements, imageUrl, index } = Astro.props as Props;
 		</h2>
 		<div class="inline-flex gap-4 justify-center">
 			{elements.map(el=>(
-			<img class={`h-7 w-7 ${el} rounded-full p-1`} src={`${el}.png`} title={el} width="30" height="30" alt="element"
-				decoding="async" loading='lazy' />
+			<Element element={el} />
 			))}
 		</div>
 	</div>
@@ -31,98 +32,7 @@ const { href, title, elements, imageUrl, index } = Astro.props as Props;
 <style>
 	:root {
 		--link-gradient: linear-gradient(45deg, #4f39fa, #da62c4 30%, var(--color-border) 60%);
-		--grass: #5FBD58;
-		--bug: #92BC2C;
-		--dark: #595761;
-		--dragon: #0C69C8;
-		--electric: #F2D94E;
-		--fairy: #EE90E6;
-		--fighting: #D3425F;
-		--fire: #dc872f;
-		--flying: #A1BBEC;
-		--ghost: #5F6DBC;
-		--ground: #DA7C4D;
-		--ice: #75D0C1;
-		--normal: #A0A29F;
-		--poison: #B763CF;
-		--psychic: #ff2ca8;
-		--rock: #a38c21;
-		--steel: #5695A3;
-		--water: #539DDF;
 	}
-
-	.grass {
-		background: var(--grass);
-	}
-
-	.bug {
-		background: var(--bug);
-	}
-
-	.dark {
-		background: var(--dark);
-	}
-
-	.dragon {
-		background: var(--dragon);
-	}
-
-	.electric {
-		background: var(--electric);
-	}
-
-	.fairy {
-		background: var(--fairy);
-	}
-
-	.fighting {
-		background: var(--fighting);
-	}
-
-	.flying {
-		background: var(--flying);
-	}
-
-	.ghost {
-		background: var(--ghost);
-	}
-
-	.ground {
-		background: var(--ground);
-	}
-
-	.ice {
-		background: var(--ice);
-	}
-
-	.normal {
-		background: var(--normal);
-	}
-
-	.poison {
-		background: var(--poison);
-	}
-
-	.psychic {
-		background: var(--psychic);
-	}
-
-	.rock {
-		background: var(--rock);
-	}
-
-	.steel {
-		background: var(--steel);
-	}
-
-	.water {
-		background: var(--water);
-	}
-
-	.fire {
-		background: var(--fire);
-	}
-
 
 	.link-card {
 		display: flex;

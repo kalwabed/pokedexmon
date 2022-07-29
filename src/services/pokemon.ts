@@ -1,12 +1,12 @@
 import { PokemonClient } from 'pokenode-ts';
 
-export async function getAllPokemons() {
-  const api = new PokemonClient({
-    cacheOptions: {
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-    },
-  });
+const api = new PokemonClient({
+  cacheOptions: {
+    maxAge: 1000 * 60 * 60 * 24, // 1 day
+  },
+});
 
+export async function getAllPokemons() {
   const listPokemons = await api.listPokemons(0, 10);
 
   const pokemonsWithDetail = await Promise.all(
@@ -23,4 +23,8 @@ export async function getAllPokemons() {
       types: p.detail.types.map(t => t.type.name),
     },
   }));
+}
+
+export async function getPokemonDetail(name: string) {
+  return await api.getPokemonByName(name);
 }

@@ -1,6 +1,7 @@
 ---
+import Element from "~components/Element.astro";
 import Layout from "~layouts/Layout.astro";
-import { getAllPokemons } from "~services/pokemon";
+import { getAllPokemons, getPokemonDetail } from "~services/pokemon";
 
 export async function getStaticPaths() {
   const pokemons = await getAllPokemons()
@@ -9,10 +10,39 @@ export async function getStaticPaths() {
 }
 
 const { name } = Astro.params;
+
+const { sprites, name: pokemonName, types, height, weight } = await getPokemonDetail(name as string)
+const pokemonPic = sprites.other.dream_world.front_default ?? sprites.other.home.front_default
 ---
 
-<Layout title={name.toString()}>
-  <h1 class="text-4xl">
-    {name}
-  </h1>
+<Layout title={name.toString().toLocaleUpperCase()}>
+
+  <div class="card max-w-6xl w-full mx-auto rounded-lg border-2 p-8 bg-white shadow">
+    <div class="flex justify-between w-full">
+      <div class="flex flex-col items-center">
+        <h1 class="text-4xl font-bold capitalize mb-4">
+          {name}
+        </h1>
+        <img src={pokemonPic} alt={pokemonName} width="200" height="200" decoding="async" loading='lazy'>
+        <div class="inline-flex items-center gap-3 mt-6">
+          {types.map(tp=>(
+          <Element element={tp.type.name} />
+          ))}
+        </div>
+
+        <div class="inline-flex gap-4 mt-8">
+          <b>Height</b> <span>{height/10} m</span>
+        </div>
+        <div class="inline-flex gap-4 mt-4">
+          <b>Weight</b> <span>{weight/10} kg</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .card {
+    border-color: var(--color-border);
+  }
+</style>
