@@ -1,5 +1,6 @@
 ---
 import Element from "~components/Element.astro";
+import GenderRate from "~components/GenderRate.astro";
 import Layout from "~layouts/Layout.astro";
 import { getAllPokemons, getPokemonDetail } from "~services/pokemon";
 
@@ -11,7 +12,9 @@ export async function getStaticPaths() {
 
 const { name } = Astro.params;
 
-const { sprites, name: pokemonName, types, height, weight } = await getPokemonDetail(name as string)
+const [species, pokemon] = await getPokemonDetail(name as string)
+
+const { sprites, name: pokemonName, types, height, weight } = pokemon
 const pokemonPic = sprites.other.dream_world.front_default ?? sprites.other.home.front_default
 ---
 
@@ -23,7 +26,10 @@ const pokemonPic = sprites.other.dream_world.front_default ?? sprites.other.home
         <h1 class="text-4xl font-bold capitalize mb-4">
           {name}
         </h1>
-        <img src={pokemonPic} alt={pokemonName} width="200" height="200" decoding="async" loading='lazy'>
+        <p class="py-1 px-2 font-mono bg-orange-300 rounded-lg text-orange-900 mb-8">
+          {species.genera.find(g=>g.language.name==='en').genus}
+        </p>
+        <img src={pokemonPic} alt={pokemonName} width="140" height="140" decoding="async" loading='lazy'>
         <div class="inline-flex items-center gap-3 mt-6">
           {types.map(tp=>(
           <Element element={tp.type.name} />
@@ -35,6 +41,10 @@ const pokemonPic = sprites.other.dream_world.front_default ?? sprites.other.home
         </div>
         <div class="inline-flex gap-4 mt-4">
           <b>Weight</b> <span>{weight/10} kg</span>
+        </div>
+
+        <div class="inline-flex mt-4">
+          <GenderRate genderRate={species.gender_rate} />
         </div>
       </div>
     </div>

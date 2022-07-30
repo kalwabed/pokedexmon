@@ -1,0 +1,25 @@
+---
+export interface Props {
+  genderRate: number;
+}
+
+const { genderRate } = Astro.props as Props
+
+// function to calculating from 0% to 100% with range from 1 to 8
+function calculatePercentage(value: number) {
+  return (value / 8) * 100
+}
+
+// reverse from 100% to 0% with range from 1 to 8
+function calculatePercentageReverse(value: number) {
+  return (8 - value) / 8 * 100
+}
+---
+
+<div class="flex w-full gap-4">
+  <span class="inline-flex items-center gap-1">{calculatePercentage(genderRate)}% <img src="male.svg" alt="male"
+      decoding="async" loading='lazy' width="20" height="20" title="Male"></span>
+  <span class="inline-flex items-center gap-1">
+    {calculatePercentageReverse(genderRate)}% <img src="female.svg" alt="female" decoding="async" loading='lazy'
+      width="20" height="20" title="Female"></span>
+</div>

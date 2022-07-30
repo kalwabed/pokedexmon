@@ -26,5 +26,5 @@ export async function getAllPokemons() {
 }
 
 export async function getPokemonDetail(name: string) {
-  return await api.getPokemonByName(name);
+  return await Promise.all([api.getPokemonSpeciesByName(name), api.getPokemonByName(name)]);
 }
