@@ -1,40 +1,38 @@
 ---
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/x-icon' href='/favicon.ico' />
+    <title>{title}</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-	<title>{title}</title>
-</head>
+  <body>
+    <main class='max-w-screen-2xl h-full w-full mx-auto px-4 xl:px-0'>
+      <slot />
+    </main>
+    <style>
+      :root {
+        --color-bg: hsl(10, 21%, 95%);
+        --color-border: hsl(17, 24%, 90%);
+      }
 
-<body>
-	<main class="max-w-screen-2xl h-full w-full mx-auto px-4 xl:px-0">
-		<slot />
-	</main>
-</body>
+      html {
+        background-color: var(--color-bg);
+      }
 
+      html,
+      body {
+        height: 100%;
+      }
+    </style>
+  </body>
 </html>
-<style>
-	:root {
-		--color-bg: hsl(10, 21%, 95%);
-		--color-border: hsl(17, 24%, 90%);
-	}
-
-	html {
-		background-color: var(--color-bg);
-	}
-
-	html,
-	body {
-		height: 100%;
-	}
-</style>

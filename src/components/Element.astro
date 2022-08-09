@@ -1,13 +1,21 @@
 ---
 export interface Props {
-  element: string
+  element: string;
 }
 
 const { element } = Astro.props as Props;
 ---
 
-<img class={`h-7 w-7 ${element} rounded-full p-1`} src={`${element}.png`} title={element} width="30" height="30"
-  alt="element" decoding="async" loading="lazy" />
+<img
+  class={`h-7 w-7 ${element} rounded-full p-1`}
+  src={`${element}.png`}
+  title={element}
+  width='30'
+  height='30'
+  alt='element'
+  decoding='async'
+  loading='lazy'
+/>
 
 <style>
   :root {

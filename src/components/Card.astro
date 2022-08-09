@@ -1,70 +1,68 @@
 ---
-import Element from '~components/Element.astro'
+import Element from '~components/Element.astro';
 
 export interface Props {
-	title: string;
-	elements: string[];
-	href: string;
-	imageUrl: string;
-	index: number
+  title: string;
+  elements: string[];
+  href: string;
+  imageUrl: string;
+  index: number;
 }
 
 const { href, title, elements, imageUrl, index } = Astro.props as Props;
 ---
 
-<a href={href} class="link-card shadow-lg hover:shadow-xl transform hover:-skew-y-3 ">
-	<div class="box flex flex-col h-full justify-center text-center gap-2">
-		<p class="font-bold text-lg">#{index+1}</p>
-		<div class="w-28 h-32 mx-auto inline-flex items-center justify-center">
-			<img src={imageUrl} alt="Pokemon" width="200" height="200" decoding="async" loading='lazy'>
-		</div>
-		<h2 class="text-xl md:text-3xl font-bold mt-3 capitalize">
-			{title}
-		</h2>
-		<div class="inline-flex gap-4 justify-center">
-			{elements.map(el=>(
-			<Element element={el} />
-			))}
-		</div>
-	</div>
+<a href={href} class='link-card shadow-lg hover:shadow-xl transform hover:-skew-y-3 '>
+  <div class='box flex flex-col h-full justify-center text-center gap-2'>
+    <p class='font-bold text-lg'>#{index + 1}</p>
+    <div class='w-28 h-32 mx-auto inline-flex items-center justify-center'>
+      <img src={imageUrl} alt='Pokemon' width='200' height='200' decoding='async' loading='lazy' />
+    </div>
+    <h2 class='text-xl md:text-3xl font-bold mt-3 capitalize'>
+      {title}
+    </h2>
+    <div class='inline-flex gap-4 justify-center'>
+      {elements.map(el => <Element element={el} />)}
+    </div>
+  </div>
 </a>
 
 <style>
-	:root {
-		--link-gradient: linear-gradient(45deg, #4f39fa, #da62c4 30%, var(--color-border) 60%);
-	}
+  :root {
+    --link-gradient: linear-gradient(45deg, #4f39fa, #da62c4 30%, var(--color-border) 60%);
+  }
 
-	.link-card {
-		display: flex;
-		flex-direction: column;
-		padding: 0.15rem;
-		height: 100%;
-		background-image: var(--link-gradient);
-		background-size: 400%;
-		border-radius: 0.5rem;
-		background-position: 100%;
-		transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
+  .link-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0.15rem;
+    height: 100%;
+    background-image: var(--link-gradient);
+    background-size: 400%;
+    border-radius: 0.5rem;
+    background-position: 100%;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-	.link-card>.box {
-		width: 100%;
-		text-decoration: none;
-		padding: 1em 1.3em;
-		border-radius: 0.35rem;
-		color: var(--text-color);
-		background-color: white;
-		opacity: 0.8;
-	}
+  .link-card > .box {
+    width: 100%;
+    text-decoration: none;
+    padding: 1em 1.3em;
+    border-radius: 0.35rem;
+    color: var(--text-color);
+    background-color: white;
+    opacity: 0.8;
+  }
 
-	h2 {
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
+  h2 {
+    transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-	}
+  .link-card:is(:hover, :focus-within) {
+    background-position: 0;
+  }
 
-	.link-card:is(:hover, :focus-within) h2 {
-		color: #4f39fa;
-	}
+  .link-card:is(:hover, :focus-within) h2 {
+    color: #4f39fa;
+  }
 </style>
