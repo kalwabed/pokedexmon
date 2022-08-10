@@ -2,8 +2,8 @@ import { PokemonClient } from 'pokenode-ts';
 
 const api = new PokemonClient({
   cacheOptions: {
-    maxAge: 1000 * 60 * 60 * 24, // 1 day
-  },
+    maxAge: 1000 * 60 * 60 * 24 // 1 day
+  }
 });
 
 export async function getAllPokemons() {
@@ -20,8 +20,8 @@ export async function getAllPokemons() {
     name: p.name,
     detail: {
       imageUrl: p.detail.sprites.other.dream_world.front_default ?? p.detail.sprites.other.home.front_default,
-      types: p.detail.types.map(t => t.type.name),
-    },
+      types: p.detail.types.map(t => t.type.name)
+    }
   }));
 }
 
