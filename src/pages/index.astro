@@ -7,7 +7,6 @@ const pokemons = await getAllPokemons();
 ---
 
 <Layout title='Welcome to Pokemon island.'>
-  <h1 class='text-4xl my-10'>Selamat Datang di Pulau Pokemon</h1>
   <div class='grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-4 mt-8'>
     {pokemons.map((poke, index) => (
       <Card

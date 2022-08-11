@@ -12,7 +12,7 @@ export interface Props {
 const { href, title, elements, imageUrl, index } = Astro.props as Props;
 ---
 
-<a href={href} class='link-card shadow-lg hover:shadow-xl transform hover:-skew-y-3 '>
+<a {href} class='link-card shadow-lg hover:shadow-xl transform hover:-skew-y-3'>
   <div class='box flex flex-col h-full justify-center text-center gap-2'>
     <p class='font-bold text-lg'>#{index + 1}</p>
     <div class='w-28 h-32 mx-auto inline-flex items-center justify-center'>

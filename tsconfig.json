@@ -7,6 +7,7 @@
     "moduleResolution": "node",
     // Enable JSON imports.
     "resolveJsonModule": true,
+    "strict": false,
     // Enable stricter transpilation for better output.
     "isolatedModules": true,
     // Add type definitions for our Astro runtime.
