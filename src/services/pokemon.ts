@@ -11,7 +11,7 @@ function getPokemonImageUrl(pokemon: Pokemon): string {
 }
 
 export async function getAllPokemons() {
-  const listPokemons = await api.listPokemons(0, 400);
+  const listPokemons = await api.listPokemons(0, 350);
 
   const pokemonsWithDetail = await Promise.all(
     listPokemons.results.map(async pokemon => {
