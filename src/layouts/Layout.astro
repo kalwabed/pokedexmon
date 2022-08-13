@@ -19,14 +19,26 @@ const { title } = Astro.props as Props;
   </head>
 
   <body>
-    <header class='w-full my-4'>
-      <a href='/' title='Back to homepage'>
-        <Image class='mx-auto' alt='Logo' src={logo} format='avif' height={100} width={310} />
-      </a>
-    </header>
-    <main class='max-w-screen-2xl h-full w-full mx-auto px-4 xl:px-0'>
-      <slot />
-    </main>
+    <div id='root' class='h-full flex-auto flex flex-col w-full'>
+      <header class='w-full my-4'>
+        <a href='/' title='Back to homepage'>
+          <Image class='mx-auto' alt='Logo' src={logo} format='avif' height={100} width={310} />
+        </a>
+      </header>
+      <main class='max-w-screen-2xl w-full mx-auto px-4 mt-4 mb-6 xl:px-0'>
+        <slot />
+      </main>
+      <footer class='mt-auto border-t py-4 w-full text-center'>
+        <a
+          href='https://github.com/kalwabed/pokedexmon'
+          rel='noopener noreferrer'
+          target='_blank'
+          class='text-gray-500 hover:text-gray-400 transition'
+          >Github
+        </a>
+      </footer>
+    </div>
+
     <style>
       :root {
         --color-bg: hsl(10, 21%, 95%);
